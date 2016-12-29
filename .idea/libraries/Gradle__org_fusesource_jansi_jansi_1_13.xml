@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.fusesource.jansi:jansi:1.13">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.fusesource.jansi/jansi/1.13/e606f66daf772d6935331500557d50210987035/jansi-1.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.fusesource.jansi/jansi/1.13/d5a43934e4bd1ab4251c4e6a2d3cd643267db73d/jansi-1.13-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

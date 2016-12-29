@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.rest-driver:rest-driver-shared:2.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.rest-driver/rest-driver-shared/2.0.0/b692ca4f230f6f71ece8f5383caf7f3bb4cb668a/rest-driver-shared-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.rest-driver/rest-driver-shared/2.0.0/c1a5448cd4541e82ac87969966213e2494bba794/rest-driver-shared-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
