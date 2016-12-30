@@ -42,7 +42,11 @@ public class CollectController {
             LOG.info("GOT SOME SHARE DATA: {}", shareData);
             final String recordString = GSON.toJson(shareData);
             final ProducerRecord record = new ProducerRecord<String, String>(appConfig.getTopic(), recordString);
-            PRODUCER.send(record);
+            PRODUCER.send(record, ((metadata, exception) -> {
+                if(exception != null){
+                    LOG.error("exception occurred: {}", exception);
+                }
+            }));
         });
         return "thanks!";
     }
@@ -57,10 +61,11 @@ public class CollectController {
 
         Properties properties = new Properties();
         properties.put("bootstrap.servers", appConfig.getMessageBusLocation());
-        properties.put("acks", "all");
+        properties.put("acks", "0");
         properties.put("retries", 0);
-        properties.put("batch.size", 16384);
+        properties.put("batch.size", 10);
         properties.put("linger.ms", 1);
+        properties.put("client.id", "sharescollector");
         properties.put("buffer.memory", 33554432);
         properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
