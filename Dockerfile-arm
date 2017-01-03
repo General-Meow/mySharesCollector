@@ -1,7 +1,7 @@
 FROM larmog/armhf-alpine-java:jdk-8u73
 MAINTAINER Paul Hoang 2016-12-15
 RUN ["mkdir", "-p", "/home/javaapp"]
-COPY ./build/libs/mySharesCollector-1.1.jar /home/javaapp/mySharesCollector-1.1.jar
+COPY ./build/libs/mySharesCollector-1.2.jar /home/javaapp/mySharesCollector-1.2.jar
 WORKDIR /home/javaapp
 EXPOSE 5555
-ENTRYPOINT ["java", "-jar", "mySharesCollector-1.1.jar"]
+ENTRYPOINT ["java", "-jar", "mySharesCollector-1.2.jar"]

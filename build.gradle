@@ -1,5 +1,5 @@
 group 'com.paulhoang'
-version '1.1'
+version '1.2'
 
 buildscript {
     repositories {
@@ -22,7 +22,6 @@ apply plugin: 'au.com.dius.pact'
 apply plugin: 'org.sonarqube'
 apply plugin: "org.springframework.boot"
 
-sourceCompatibility = 1.8
 mainClassName = "com.paulhoang.CollectController"
 
 sourceCompatibility = 1.8
