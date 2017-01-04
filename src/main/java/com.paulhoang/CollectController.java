@@ -1,6 +1,6 @@
 package com.paulhoang;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import com.paulhoang.data.AppConfig;
 import com.paulhoang.data.ShareData;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
+import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -27,7 +29,7 @@ public class CollectController {
     private static final Logger LOG = LoggerFactory.getLogger(CollectController.class);
     private static AppConfig appConfig;
     private static KafkaProducer<String, String> PRODUCER;
-    private static final Gson GSON = new Gson();
+    private static Gson GSON;
 
     @RequestMapping(value = "/")
     @ResponseBody
@@ -52,8 +54,18 @@ public class CollectController {
     }
 
     public static void main(String[] args) throws Exception {
+        setupGson();
         setupKafkaProducer();
         SpringApplication.run(CollectController.class, args);
+    }
+
+    private static void setupGson() {
+        JsonSerializer<Date> ser = (src, typeOfSrc, context) -> src == null ? null : new JsonPrimitive(src.getTime());
+        JsonDeserializer<Date> deser = (json, typeOfT, context) -> json == null ? null : new Date(json.getAsLong());
+
+        GSON = new GsonBuilder()
+                .registerTypeAdapter(Date.class, ser)
+                .registerTypeAdapter(Date.class, deser).create();
     }
 
     private static void setupKafkaProducer(){
